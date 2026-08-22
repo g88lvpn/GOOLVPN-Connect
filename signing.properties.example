@@ -1,0 +1,6 @@
+# The real file belongs in %USERPROFILE%/GOOLVPN-signing/signing.properties.
+# Back it up together with the keystore and never commit either file.
+KEYSTORE_FILE=C:/Users/you/GOOLVPN-signing/goolvpn-release.jks
+KEYSTORE_PASS=
+ALIAS_NAME=goolvpn-release
+ALIAS_PASS=

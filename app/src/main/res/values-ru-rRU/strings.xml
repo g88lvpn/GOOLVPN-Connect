@@ -1,0 +1,584 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <!-- App -->
+    <string name="app_name" translatable="false">GOOLVPN Connect</string>
+    <string name="app_version_title">Версия приложения</string>
+    <string name="language">Язык</string>
+    <string name="system_default">Системный по умолчанию</string>
+
+    <!-- Common Actions -->
+    <string name="ok">OK</string>
+    <string name="cancel">Отмена</string>
+    <string name="save">Сохранить</string>
+    <string name="discard">Отказаться</string>
+    <string name="edit">Редактировать</string>
+    <string name="close">Закрыть</string>
+    <string name="dismiss">Закрыть</string>
+    <string name="stop">Остановить</string>
+    <string name="reset">Сброс</string>
+    <string name="destroy">Уничтожить</string>
+    <string name="clear">Очистить</string>
+    <string name="browse">Просмотр</string>
+    <string name="search">Поиск</string>
+    <string name="action">Действие</string>
+    <string name="action_start">Начать</string>
+    <string name="action_deselect">Отменить выбор</string>
+    <string name="expand">Развернуть</string>
+    <string name="collapse">Свернуть</string>
+    <string name="expand_all">Развернуть все</string>
+    <string name="collapse_all">Свернуть все</string>
+    <string name="previous">Предыдущий</string>
+    <string name="next">Следующий</string>
+    <string name="update">Обновление</string>
+    <string name="read_more">Подробнее</string>
+    <string name="no_thanks">Нет, спасибо</string>
+    <string name="options">Настройки</string>
+    <string name="more_options">Дополнительные параметры</string>
+
+    <!-- Common States -->
+    <string name="enabled">Включено</string>
+    <string name="disabled">Выключено</string>
+    <string name="loading">Загрузка...</string>
+    <string name="calculating">Вычисление...</string>
+    <string name="auto">Авто</string>
+    <string name="success">Успешно</string>
+    <string name="default_text">По умолчанию</string>
+
+    <!-- Navigation Titles -->
+    <string name="title_dashboard">Главная</string>
+    <string name="title_configuration">Профили</string>
+    <string name="title_log">Логи</string>
+    <string name="title_settings">Параметры</string>
+    <string name="title_app_settings">Приложение</string>
+    <string name="title_new_profile">Новый профиль</string>
+    <string name="title_edit_profile">Редактировать профиль</string>
+    <string name="title_edit_configuration">Редактировать конфигурацию</string>
+    <string name="title_groups">Группы</string>
+    <string name="title_debug">Отладка</string>
+    <string name="title_connections">Соединения</string>
+    <string name="title_others">Другое</string>
+    <string name="title_scan_result">Результат сканирования</string>
+
+    <!-- Status -->
+    <string name="status_default">Служба не запущена</string>
+    <string name="status_starting">Запуск</string>
+    <string name="status_stopping">Остановка</string>
+    <string name="status_started">Запущена</string>
+
+    <!-- Dashboard -->
+    <string name="dashboard_items">Элементы главной страницы</string>
+    <string name="memory">Память</string>
+    <string name="goroutines">Горутины</string>
+    <string name="upload">Отправка</string>
+    <string name="download">Получение</string>
+    <string name="connections_in">Входящие</string>
+    <string name="connections_out">Исходящие</string>
+    <string name="clash_mode">Режим Clash</string>
+    <string name="mode">Режим</string>
+    <string name="system_proxy">Системный прокси</string>
+    <string name="url_test">Тест</string>
+    <string name="drag_handle_to_reorder">Перетащите ползунок, чтобы изменить порядок элементов</string>
+    <string name="drag_to_reorder">Перетащите, чтобы изменить порядок</string>
+    <string name="reset_order">Сбросить порядок</string>
+
+    <!-- Connections -->
+    <string name="empty_connections">Нет подключений</string>
+    <string name="search_connections">Поиск подключений...</string>
+    <string name="close_connections_confirm">Закрыть все соединения?</string>
+    <string name="connection_state_all">Все</string>
+    <string name="connection_state_active">Активно</string>
+    <string name="connection_state_closed">Закрыто</string>
+    <string name="connection_sort_date">Дата</string>
+    <string name="connection_sort_traffic">Трафик</string>
+    <string name="connection_sort_traffic_total">Общий трафик</string>
+    <string name="connection_close">Закрыть</string>
+    <string name="connection_close_all">Закрыть все</string>
+    <string name="connection_state">Состояние</string>
+    <string name="connection_details">Данные подключения</string>
+    <string name="connection_section_basic">Основная информация</string>
+    <string name="connection_section_metadata">Метаданные</string>
+    <string name="connection_section_process">Информация о процессе</string>
+    <string name="connection_created_at">Создано в</string>
+    <string name="connection_closed_at">Закрыто в</string>
+    <string name="connection_duration">Продолжительность</string>
+    <string name="connection_uplink">Восходящий канал</string>
+    <string name="connection_downlink">Нисходящий канал</string>
+    <string name="connection_inbound">Входящий</string>
+    <string name="connection_inbound_type">Входящий тип</string>
+    <string name="connection_outbound">Исходящий</string>
+    <string name="connection_outbound_type">Исходящий тип</string>
+    <string name="connection_ip_version">Версия IP</string>
+    <string name="connection_network">Сеть</string>
+    <string name="connection_source">Источник</string>
+    <string name="connection_destination">Место назначения</string>
+    <string name="connection_domain">Домен</string>
+    <string name="connection_protocol">Протокол</string>
+    <string name="connection_user">Пользователь</string>
+    <string name="connection_from_outbound">Из исходящих</string>
+    <string name="connection_match_rule">Правило соответствия</string>
+    <string name="connection_chain">Цепь</string>
+    <string name="connection_process_id">ID процесса</string>
+    <string name="connection_user_id">ID пользователя</string>
+    <string name="connection_user_name">Имя пользователя</string>
+    <string name="connection_process_path">Путь процесса</string>
+    <string name="connection_package_name">Название пакета</string>
+
+    <!-- Profiles -->
+    <string name="no_profiles">Профили не настроены</string>
+    <string name="add_profile">Добавить профиль</string>
+    <string name="update_profile">Обновить профиль</string>
+    <string name="import_remote_profile">Импортировать удалённый профиль</string>
+    <string name="import_remote_profile_message">Импортировать удалённый профиль %1$s? Для загрузки конфигурации будет установлено соединение с %2$s.</string>
+    <string name="import_from_file_description">Импорт конфигурации из локального файла</string>
+    <string name="scan_qr_code_description">Сканирование QR-кода с конфигурацией</string>
+    <string name="create_new_profile_description">Создать новый профиль с нуля</string>
+    <string name="icloud_profile_unsupported">Профили iCloud не поддерживаются на текущей платформе</string>
+    <string name="profile_name">Имя</string>
+    <string name="profile_type">Тип</string>
+    <string name="profile_source">Источник</string>
+    <string name="profile_url" translatable="false">URL</string>
+    <string name="profile_import_file">Импортировать файл</string>
+    <string name="profile_create">Создать</string>
+    <string name="profile_share_url">Поделиться URL в виде QR-кода</string>
+    <string name="profile_input_required">Обязательно</string>
+    <string name="profile_update">Обновить</string>
+    <string name="profile_auto_update">Автообновление</string>
+    <string name="profile_auto_update_interval">Интервал автообновления (минуты)</string>
+    <string name="profile_auto_update_interval_minimum_hint">Минимальное значение - 15</string>
+    <string name="profile_type_local">Локальный</string>
+    <string name="profile_type_remote">Удалённый</string>
+    <string name="profile_type_remote_updated">Удалённый • %s</string>
+    <string name="profile_source_create_new">Создать новый</string>
+    <string name="profile_source_import">Импорт</string>
+    <string name="profile_add_import_file">Импорт из файла</string>
+    <string name="profile_add_scan_qr_code">Сканировать QR-код</string>
+    <string name="profile_add_create_manually">Создать вручную</string>
+    <string name="profile_override">Перезапись профиля</string>
+    <string name="basic_information">Основная информация</string>
+    <string name="remote_configuration">Удалённая конфигурация</string>
+    <string name="last_updated_format">Последнее обновление: %s</string>
+    <string name="content">Содержимое</string>
+    <string name="json_viewer">Просмотр JSON</string>
+    <string name="json_editor">Редактор JSON</string>
+    <string name="view_configuration">Просмотреть конфигурацию</string>
+    <string name="save_as_file">Сохранить как файл</string>
+    <string name="share_as_file">Поделиться как файлом</string>
+    <string name="save_content_json">Сохранить содержимое в файл JSON</string>
+    <string name="share_content_json">Поделиться содержимым в файле JSON</string>
+    <string name="unsaved_changes">Несохранённые изменения</string>
+    <string name="unsaved_changes_message">Есть несохранённые изменения. Отменить их?</string>
+    <string name="import_profile_confirm_title">Импорт профиля</string>
+    <string name="import_profile_confirm_message">Импортировать профиль \'%s\'?</string>
+    <string name="import_action">Импортировать</string>
+
+    <!-- Groups -->
+    <string name="group_selected_title">Выбрано</string>
+    
+    <!-- Log -->
+    <string name="log_level">Уровень логов</string>
+    <string name="filter_label">Фильтр: %s</string>
+    <string name="clear_filter">Очистить</string>
+    <string name="clear_logs">Очистить логи</string>
+    <string name="search_logs_placeholder">Поиск в логах...</string>
+    <string name="logs_copied_to_clipboard">Лог скопирован в буфер обмена</string>
+    <string name="no_logs_to_copy">Нет записей для копирования</string>
+    <string name="no_logs_to_share">Нет записей для отправки</string>
+    <string name="intent_share_logs">Отправить лог</string>
+    <string name="selected_count">Выбрано: %d</string>
+    <string name="not_selected">Не выбрано</string>
+    <string name="save_to_clipboard">В буфер обмена</string>
+    <string name="save_to_file">В файл</string>
+
+    <!-- Settings -->
+    <string name="service">Служба</string>
+    <string name="core">Ядро</string>
+    <string name="core_version_title">Версия ядра</string>
+    <string name="core_data_size">Размер данных</string>
+    <string name="about">О приложении</string>
+    <string name="source_code">Исходный код</string>
+    <string name="sponsor">Поддержать</string>
+    <string name="working_directory">Рабочая директория</string>
+    <string name="beta_settings">Бета-настройки</string>
+    <string name="disable_deprecated_warnings">Отключить предупреждения об устаревании</string>
+    <string name="notification_settings">Уведомления</string>
+    <string name="enable_notification">Уведомление активного VPN</string>
+    <string name="service_notification_description">Нажмите, чтобы показать или скрыть уведомление GOOLVPN в настройках Android. Системный значок VPN останется.</string>
+    <string name="service_notification_channel_name">Активное VPN-подключение</string>
+    <string name="goolvpn_dynamic_notification_description">Применяется сразу, без переподключения VPN. Выключите, чтобы снизить фоновую активность.</string>
+    <string name="dynamic_notification">Показывать текущую скорость в уведомлении</string>
+    <string name="disable_notification_description">Android требует запускать VPN как фоновую службу. На следующем экране можно скрыть уведомление GOOLVPN, но системный значок VPN останется.</string>
+    <string name="disable_notification_description_legacy">Android требует запускать VPN как фоновую службу. В сведениях о приложении можно скрыть уведомления GOOLVPN, но системный значок VPN останется.</string>
+    <string name="allow_bypass">Разрешить обход VPN</string>
+    <string name="allow_bypass_description">Если включено, приложения могут обойти это VPN-соединение и использовать базовую сеть напрямую.</string>
+    <string name="android_documentation">Документация Android</string>
+    <string name="auto_redirect">Автоматическое перенаправление</string>
+    <string name="auto_redirect_description">Требуются права ROOT</string>
+    <string name="system_http_proxy">Системный HTTP-прокси</string>
+    <string name="update_settings">Настройки обновлений</string>
+
+    <!-- Per-App Proxy -->
+    <string name="per_app_proxy">Приложения и VPN</string>
+    <string name="per_app_proxy_mode">Режим прокси</string>
+    <string name="per_app_proxy_mode_include">Включить</string>
+    <string name="per_app_proxy_mode_include_description">Только выбранные приложения будут использовать VPN</string>
+    <string name="per_app_proxy_mode_exclude">Исключить</string>
+    <string name="per_app_proxy_mode_exclude_description">Выбранные приложения не будут использовать VPN</string>
+    <string name="per_app_proxy_action_copy">Копировать</string>
+    <string name="per_app_proxy_action_copy_package_name">Имя пакета</string>
+    <string name="per_app_proxy_action_copy_uid">Уникальный ID</string>
+    <string name="per_app_proxy_sort_mode">Сортировка</string>
+    <string name="per_app_proxy_sort_mode_name">По имени</string>
+    <string name="per_app_proxy_sort_mode_package_name">По имени пакета</string>
+    <string name="per_app_proxy_sort_mode_uid">По уникальному ID</string>
+    <string name="per_app_proxy_sort_mode_install_time">По дате установки</string>
+    <string name="per_app_proxy_sort_mode_update_time">По дате обновления</string>
+    <string name="per_app_proxy_sort_mode_reverse">В обратном порядке</string>
+    <string name="per_app_proxy_filter">Фильтр</string>
+    <string name="per_app_proxy_hide_system_apps">Скрыть системные приложения</string>
+    <string name="per_app_proxy_hide_offline_apps">Скрыть оффлайн-приложения</string>
+    <string name="per_app_proxy_hide_disabled_apps">Скрыть отключённые приложения</string>
+    <string name="per_app_proxy_select">Выбрать</string>
+    <string name="per_app_proxy_select_all">Выбрать все</string>
+    <string name="per_app_proxy_select_none">Снять выделение</string>
+    <string name="per_app_proxy_backup">Резервная копия</string>
+    <string name="per_app_proxy_import">Импорт из буфера обмена</string>
+    <string name="per_app_proxy_export">Экспорт в буфер обмена</string>
+    <string name="per_app_proxy_scan">Сканирование</string>
+    <string name="per_app_proxy_scan_china_apps">Китайские приложения</string>
+    <string name="per_app_proxy_manage">Управление</string>
+    <string name="content_description_app_icon">Значок приложения</string>
+    <string name="per_app_proxy_managed_mode">Управляемый режим</string>
+    <string name="per_app_proxy_managed_mode_description">Автоматически исключать китайские приложения</string>
+    <string name="per_app_proxy_package_query_mode">Режим</string>
+    <string name="per_app_proxy_shizuku_required">При установке из Play Store для работы прокси для каждого приложения требуется Shizuku. Google Play не позволяет нам использовать разрешение QUERY_ALL_PACKAGES (хотя другим подобным приложениям это разрешено), которое необходимо для отображения списка приложений.</string>
+    <string name="per_app_proxy_root_required">При установке из Play Store для функции прокси для отдельных приложений требуются права ROOT. Google Play не разрешает нам использовать разрешение QUERY_ALL_PACKAGES (хотя другим подобным приложениям это разрешено), которое необходимо для отображения списка приложений.</string>
+    <string name="privileged_access_required">Для полного списка приложений необходимы права ROOT или доступ через Shizuku</string>
+
+    <!-- Permissions -->
+    <string name="background_permission">Фоновое разрешение</string>
+    <string name="background_permission_description">Предоставить необходимые разрешения для корректной работы VPN.\n\nЕсли Вы используете устройство китайского производителя, уведомление может не исчезнуть даже после предоставления разрешения.</string>
+    <string name="request_background_permission">Игнорировать оптимизацию батареи</string>
+    <string name="location_permission_title">Разрешение на определение местоположения</string>
+    <string name="location_permission_description">Ваш профиль содержит правила маршрутизации &lt;strong&gt;&lt;tt&gt;wifi_ssid&lt;/tt&gt; или &lt;tt&gt;wifi_bssid&lt;/tt&gt;&lt;/strong&gt;. Для их работы sing-box использует разрешение на &lt;strong&gt;определение местоположения&lt;/strong&gt; &lt;strong&gt;в фоновом режиме&lt;/strong&gt;, чтобы получить информацию о подключённой сети Wi-Fi. Эта информация будет использоваться &lt;strong&gt;исключительно для маршрутизации&lt;/strong&gt;.</string>
+    <string name="location_permission_background_description">В Android 10 и новее требуется разрешение на &lt;strong&gt;определение местоположения в фоне&lt;/strong&gt;. Выберите &lt;strong&gt;«Разрешить всегда»&lt;/strong&gt; для предоставления этого разрешения.</string>
+    <string name="notification_permission_title">Разрешение на уведомления</string>
+    <string name="notification_permission_required_description">Без разрешения на отправку уведомлений sing-box не сможет отображать скорость сети в реальном времени. Предоставьте разрешение или отключите уведомления о скорости перед запуском службы.</string>
+    <string name="root_access_required">Требуются права ROOT</string>
+    <string name="root_access_denied">Доступ ROOT запрещен</string>
+
+    <!-- Updates -->
+    <string name="check_update">Проверить обновления</string>
+    <string name="check_update_automatic">Автоматическая проверка обновлений</string>
+    <string name="check_update_prompt_play">Включить автоматическую проверку обновлений через **Google Play**?</string>
+    <string name="check_update_prompt_github">Включить автоматическую проверку обновлений **GOOLVPN**?</string>
+    <string name="update_track">Канал обновлений</string>
+    <string name="update_track_stable">Стабильный</string>
+    <string name="update_track_beta">Бета</string>
+    <string name="update_track_not_supported">Этот канал пока не поддерживает проверку обновлений</string>
+    <string name="view_release">Посмотреть релиз</string>
+    <string name="downloading">Загрузка...</string>
+    <string name="exporting">Экспорт...</string>
+    <string name="no_updates_available">Обновлений нет</string>
+    <string name="new_version_available">Доступна новая версия: %s</string>
+    <string name="auto_update">Фоновая загрузка обновлений</string>
+    <string name="auto_update_description">Раз в сутки проверять и заранее загружать проверенные обновления по Wi-Fi</string>
+    <string name="update_notification_channel_name">Обновления приложения</string>
+    <string name="update_notification_channel_description">Проверенные обновления GOOLVPN, готовые к установке</string>
+    <string name="update_ready_title">Обновление GOOLVPN готово</string>
+    <string name="update_ready_description">Версия %1$s загружена и проверена. Нажмите, чтобы установить.</string>
+
+    <!-- Silent Install -->
+    <string name="silent_install">Тихая установка</string>
+    <string name="silent_install_description">Устанавливать обновления без Вашего участия</string>
+    <string name="silent_install_method">Метод установки</string>
+    <string name="silent_install_verify_failed">%s недоступен или доступ запрещен</string>
+    <string name="install_method_package_installer">PackageInstaller</string>
+    <string name="install_method_shizuku">Shizuku</string>
+    <string name="install_method_root">ROOT</string>
+    <string name="package_installer_not_available">Разрешение на установку не предоставлено</string>
+    <string name="grant_install_permission">Предоставить разрешение на установку</string>
+    <string name="grant_install_permission_description">Разрешить установку приложений из этого источника</string>
+    
+    <!-- Shizuku -->
+    <string name="shizuku_not_available">Shizuku не установлен или не запущен</string>
+    <string name="shizuku_description">Shizuku позволяет приложениям напрямую использовать системные API с повышенными привилегиями</string>
+    <string name="get_shizuku">Установить Shizuku</string>
+    <string name="start_shizuku">Запустить Shizuku</string>
+    <string name="request_shizuku">Запросить Shizuku</string>
+
+    <!-- Time -->
+    <string name="time_just_now">Только что</string>
+    <string name="time_yesterday">Вчера</string>
+    <string name="time_now">Сейчас</string>
+    <string name="time_yesterday_short">1 день</string>
+    <string name="time_minutes_short">%d мин.</string>
+    <string name="time_hours_short">%d ч.</string>
+    <string name="time_days_short">%d дн.</string>
+    <plurals name="time_minutes_ago">
+        <item quantity="one">%d минуту назад</item>
+        <item quantity="few">%d минуты назад</item>
+        <item quantity="many">%d минут назад</item>
+        <item quantity="other">%d минут назад</item>
+    </plurals>
+    <plurals name="time_hours_ago">
+        <item quantity="one">%d час назад</item>
+        <item quantity="few">%d часа назад</item>
+        <item quantity="many">%d часов назад</item>
+        <item quantity="other">%d часов назад</item>
+    </plurals>
+    <plurals name="time_days_ago">
+        <item quantity="one">%d день назад</item>
+        <item quantity="few">%d дня назад</item>
+        <item quantity="many">%d дней назад</item>
+        <item quantity="other">%d дней назад</item>
+    </plurals>
+    
+    <!-- Menu -->
+    <string name="menu_undo">Отменить</string>
+    <string name="menu_redo">Повторить</string>
+    <string name="menu_format">Форматировать</string>
+    <string name="menu_delete">Удалить</string>
+    <string name="menu_share">Поделиться</string>
+
+    <!-- Errors -->
+    <string name="error_title">Ошибка</string>
+    <string name="error_missing_vpn_permission">Отсутствует разрешение на VPN</string>
+    <string name="error_empty_configuration">Пустая конфигурация</string>
+    <string name="error_empty_file">Пустой файл</string>
+    <string name="error_decode_profile">Не удалось декодировать профиль: %s</string>
+    <string name="error_invalid_configuration">Недопустимая конфигурация sing-box: %s</string>
+    <string name="error_start_command_server">Запуск сервера команд</string>
+    <string name="error_create_service">Создание службы</string>
+    <string name="error_start_service">Запуск службы</string>
+    <string name="error_deprecated_warning">Предупреждение об устаревании</string>
+    <string name="error_deprecated_documentation">Документация</string>
+    <string name="file_manager_missing">На Вашем устройстве отсутствует стандартный файловый менеджер Android. Установите, например, Material Files.</string>
+    <string name="no_file_manager">Файловый менеджер не найден</string>
+    
+    <!-- Failed Operations -->
+    <string name="failed_save_profile">Не удалось сохранить профиль: %s</string>
+    <string name="failed_save_logs">Не удалось сохранить лог: %s</string>
+    <string name="failed_share_logs">Не удалось отправить лог: %s</string>
+    <string name="failed_read_configuration">Не удалось прочитать конфигурацию: %s</string>
+    
+    <!-- Success Messages -->
+    <string name="success_profile_saved">Профиль успешно сохранён</string>
+    <string name="success_logs_saved">Лог успешно сохранён</string>
+    <string name="success_configuration_saved">Конфигурация сохранена</string>
+    <string name="copied_to_clipboard">Скопировано в буфер обмена</string>
+    
+    <!-- Toast Messages -->
+    <string name="toast_clipboard_empty">Буфер обмена пуст</string>
+    <string name="toast_copied_to_clipboard">Экспортировано в буфер обмена</string>
+    <string name="toast_imported_from_clipboard">Импортировано из буфера обмена</string>
+    
+    <!-- Scanning -->
+    <string name="profile_add_scan_use_front_camera">Фронтальная камера</string>
+    <string name="profile_add_scan_use_vendor_analyzer">Анализатор MLKit</string>
+    <string name="profile_add_scan_enable_torch">Фонарик</string>
+    <string name="message_scanning">Сканирование…</string>
+    <string name="message_scan_app_no_apps_found">Совпадающих приложений не найдено</string>
+    <string name="message_scan_app_found">Найдены следующие приложения. Выберите нужное действие.</string>
+
+    <!-- Icon Selection -->
+    <string name="icon">Иконка</string>
+    <string name="icon_count_format">%d иконок</string>
+    <string name="no_icons_found">Иконки не найдены</string>
+    <string name="no_icons_match">Нет иконок, соответствующих \'%s\'</string>
+    <string name="profile_icon">Иконка профиля</string>
+    <string name="select_icon">Выбрать иконку</string>
+    <string name="select_profile_icon">Выбрать иконку профиля</string>
+    <string name="search_icons_placeholder">Поиск иконок...</string>
+    <string name="search_icons">Поиск иконок</string>
+    <string name="close_search">Закрыть поиск</string>
+    <string name="current_icon_format">Текущая: %s</string>
+    <string name="categories">Категории</string>
+    <string name="all_icons">Все иконки</string>
+    <string name="back_to_categories">Назад к категориям</string>
+    
+    <!-- QR Code -->
+    
+    <!-- QR Stream (QRS) -->
+    <string name="share_as_qrs">Отправить как QR Stream</string>
+    <string name="qrs_fps">Кадров/сек.</string>
+    <string name="qrs_slice_size">Размер фрагмента</string>
+    <string name="qrs_what_is_qrs">Что такое QRS</string>
+    
+    <!-- Search -->
+    <string name="search_placeholder">Найти в документе</string>
+
+    <!-- Content Descriptions (Accessibility) -->
+    <string name="content_description_back">Назад</string>
+    <string name="content_description_scroll_to_bottom">Прокрутить вниз</string>
+    <string name="content_description_exit_selection_mode">Выйти из режима выбора</string>
+    <string name="content_description_copy_selected">Копировать выделенное</string>
+    <string name="content_description_clear_search">Очистить поиск</string>
+    <string name="content_description_qr_code">QR-код</string>
+    <string name="content_description_resume_logs">Возобновить лог</string>
+    <string name="content_description_pause_logs">Приостановить лог</string>
+    <string name="content_description_collapse_search">Свернуть поиск</string>
+    <string name="content_description_search_logs">Поиск в логе</string>
+    
+    <!-- Xposed Module -->
+    <string name="xposed_description">Привилегированное расширение для sing-box</string>
+
+    <!-- Privileged Enhancement -->
+    <string name="privilege_module_title">Привилегированные модули</string>
+    <string name="lsposed_module_activated">Модуль LSPosed активирован</string>
+    <string name="lsposed_module_pending_update">Ожидается обновление модуля LSPosed</string>
+    <string name="lsposed_module_pending_downgrade">Ожидается откат модуля LSPosed</string>
+    <string name="lsposed_module_not_activated">Модуль LSPosed не активирован</string>
+    <string name="privilege_settings">Привилегированное расширение</string>
+    <string name="privilege_settings_hide_title">Скрытие настроек</string>
+    <string name="privilege_settings_hide_description">Защита от обнаружения VPN для выбранных приложений</string>
+    <string name="privilege_settings_hide_manage">Управление</string>
+    <string name="privilege_settings_hide_test">Запустить тест</string>
+    <string name="privilege_settings_hide_test_result">Результат теста</string>
+    <string name="privilege_settings_hide_test_running">Выполняются тесты на обнаружение...</string>
+    <string name="privilege_settings_hide_test_not_detected">Не обнаружено</string>
+    <string name="privilege_settings_interface_rename_title">Переименование интерфейса</string>
+    <string name="privilege_settings_interface_prefix">Префикс интерфейса</string>
+    <string name="privilege_settings_vpn_detection_title">Обнаружение VPN</string>
+    <string name="privilege_settings_view_logs">Просмотреть журнал</string>
+    <string name="privilege_settings_export_debug">Экспорт отладочной информации</string>
+    <string name="privilege_settings_hook_logs_empty">Журнал пуст</string>
+    <string name="privilege_settings_export_debug_complete">Экспорт завершён</string>
+    <string name="privilege_settings_export_debug_message">Файл содержит конфиденциальную информацию и не должен распространяться публично. Размер: %s</string>
+    <string name="privilege_settings_export_debug_failed">Не удалось экспортировать отладочную информацию: %s</string>
+    <string name="privilege_settings_risky_app_title">Предупреждение</string>
+    <string name="privilege_settings_risky_vpn_message_single">Это приложение - VPN-клиент. Скрытие VPN может вызвать проблемы: %1$s</string>
+    <string name="privilege_settings_risky_vpn_message_multi">Эти приложения - VPN-клиенты. Скрытие VPN может вызвать проблемы: %1$s</string>
+    <string name="privilege_settings_risky_management_message_single">Это приложение имеет права управления сетью. Скрытие VPN может вызвать проблемы: %1$s</string>
+    <string name="privilege_settings_risky_management_message_multi">Эти приложения имеют права управления сетью. Скрытие VPN может вызвать проблемы: %1$s</string>
+    <string name="privilege_module_restart_action">Перезагрузить</string>
+    <string name="privilege_module_restart_failed">Не удалось запросить перезагрузку: %1$s</string>
+    <string name="privilege_module_restart_notification_title">Требуется перезагрузка</string>
+    <string name="privilege_module_restart_notification_message">Модуль LSPosed обновлён. Перезагрузите устройство, чтобы применить изменения.</string>
+    <string name="privilege_module_restart_channel">Модуль LSPosed</string>
+    <string name="goolvpn_home_title">GOOLVPN Connect</string>
+    <string name="goolvpn_activation_title">Вход в GOOLVPN</string>
+    <string name="goolvpn_activation_description">Откройте Telegram и нажмите кнопку входа в сообщении бота. Приложение настроится само. Ручной ввод кода останется запасным вариантом.</string>
+    <string name="goolvpn_activation_code">Код из бота</string>
+    <string name="goolvpn_activate">Войти и настроить</string>
+    <string name="goolvpn_get_code">Получить код в Telegram</string>
+    <string name="goolvpn_activation_link_missing_code">Ссылка на вход открыта без кода. Вернитесь в Telegram, откройте последнее сообщение GOOLVPN и снова нажмите кнопку входа. Код также можно вставить вручную.</string>
+    <string name="goolvpn_status_protected">Защищено</string>
+    <string name="goolvpn_status_connecting">Подключаемся</string>
+    <string name="goolvpn_status_disconnecting">Отключаемся</string>
+    <string name="goolvpn_status_disconnected">Не подключено</string>
+    <string name="goolvpn_status_inactive">Доступ не активен</string>
+    <string name="goolvpn_connect">Подключить</string>
+    <string name="goolvpn_disconnect">Отключить</string>
+    <string name="goolvpn_valid_until">Доступ до %1$s</string>
+    <string name="goolvpn_lifetime">Без ограничения срока</string>
+    <string name="goolvpn_automatic_mode">Автоматический режим</string>
+    <string name="goolvpn_automatic_mode_description">Приложение само выбирает рабочее подключение и переключает резервные маршруты.</string>
+    <string name="goolvpn_connection_mode">Режим подключения</string>
+    <string name="goolvpn_mode_automatic">Авто</string>
+    <string name="goolvpn_mode_fast">Быстро</string>
+    <string name="goolvpn_mode_stable">Стабильно</string>
+    <string name="goolvpn_mode_automatic_description">Сам выбирает рабочее подключение и переключает резервные маршруты.</string>
+    <string name="goolvpn_mode_fast_description">Приоритет Hysteria2, при недоступности UDP включится совместимый резерв.</string>
+    <string name="goolvpn_mode_stable_description">Использует VLESS и Naive в сетях, где UDP ограничен.</string>
+    <string name="goolvpn_excluded_apps">Приложения и VPN</string>
+    <string name="goolvpn_excluded_apps_description">Выберите, какие приложения используют GOOLVPN.</string>
+    <string name="goolvpn_refresh">Обновить доступ</string>
+    <string name="goolvpn_account">Личный кабинет и тарифы</string>
+    <string name="goolvpn_support">Поддержка</string>
+    <string name="goolvpn_deactivate">Отвязать это устройство</string>
+    <string name="goolvpn_more_actions">Дополнительные действия</string>
+    <string name="goolvpn_app_routing_title">Какие приложения используют VPN</string>
+    <string name="goolvpn_app_mode_exclude">Исключить выбранные</string>
+    <string name="goolvpn_app_mode_include">Только выбранные</string>
+    <string name="goolvpn_app_mode_exclude_description">Все приложения используют VPN, кроме выбранных.</string>
+    <string name="goolvpn_app_mode_include_description">Только выбранные приложения используют VPN. Остальные подключаются напрямую.</string>
+    <string name="goolvpn_app_reconnect_active">Сохранено. Чтобы применить изменения, отключите и снова подключите VPN.</string>
+    <string name="goolvpn_app_reconnect_inactive">Сохранено. Изменения применятся при следующем подключении.</string>
+    <string name="goolvpn_app_presets">Пресеты приложений</string>
+    <string name="goolvpn_app_presets_description">Выберите группу — добавятся только установленные приложения. Любое из них можно убрать из списка ниже.</string>
+    <string name="goolvpn_app_preset_food">Еда и доставка</string>
+    <string name="goolvpn_app_preset_food_examples">Например: Перекрёсток, БУРГЕР КИНГ</string>
+    <string name="goolvpn_app_preset_banking">Банки</string>
+    <string name="goolvpn_app_preset_banking_examples">Например: СберБанк, Т-Банк, Альфа-Банк</string>
+    <string name="goolvpn_app_preset_yandex">Сервисы Яндекса</string>
+    <string name="goolvpn_app_preset_yandex_examples">Например: Карты, Музыка, Go</string>
+    <string name="goolvpn_app_preset_services">Российские сервисы</string>
+    <string name="goolvpn_app_preset_services_examples">Например: Госуслуги, RuStore, операторы связи</string>
+    <string name="goolvpn_app_preset_shopping">Покупки</string>
+    <string name="goolvpn_app_preset_shopping_examples">Например: Ozon, Wildberries, Авито</string>
+    <string name="goolvpn_app_preset_added">Добавлено приложений: %1$d</string>
+    <string name="goolvpn_app_preset_none">В этой группе нет новых установленных приложений</string>
+    <string name="goolvpn_devices">Устройства</string>
+    <string name="goolvpn_devices_settings_description">Посмотреть активные установки и освободить слот.</string>
+    <string name="goolvpn_devices_limit">Используется устройств: %1$d из %2$d</string>
+    <string name="goolvpn_devices_description">После отзыва на выбранном устройстве потребуется активировать приложение заново. Текущее устройство можно деактивировать в настройках.</string>
+    <string name="goolvpn_devices_current">Это устройство</string>
+    <string name="goolvpn_devices_version">Версия приложения: %1$s</string>
+    <string name="goolvpn_devices_last_seen">Последняя активность: %1$s</string>
+    <string name="goolvpn_devices_revoke">Отозвать</string>
+    <string name="goolvpn_devices_revoke_title">Отозвать устройство?</string>
+    <string name="goolvpn_devices_revoke_text">На устройстве «%1$s» потребуется заново активировать GOOLVPN Connect.</string>
+    <string name="goolvpn_feedback">Идеи и улучшения</string>
+    <string name="goolvpn_feedback_description">Поделиться предложением без диагностики.</string>
+    <string name="goolvpn_loading">Обновляем доступ…</string>
+    <string name="goolvpn_settings">Настройки</string>
+    <string name="goolvpn_refresh_description">Загрузить актуальный доступ и настройки подключений.</string>
+    <string name="goolvpn_updates">Обновления приложения</string>
+    <string name="goolvpn_version">Установлена версия: %1$s</string>
+    <string name="goolvpn_updates_installed">GOOLVPN Connect %1$s</string>
+    <string name="goolvpn_updates_description">Проверяйте новые версии и устанавливайте их прямо из приложения.</string>
+    <string name="goolvpn_updates_check">Проверить обновления</string>
+    <string name="goolvpn_updates_current">У вас актуальная версия.</string>
+    <string name="goolvpn_updates_available">Доступна версия %1$s</string>
+    <string name="goolvpn_updates_install">Скачать и установить</string>
+    <string name="goolvpn_updates_check_failed">Не удалось проверить обновления. Попробуйте позже.</string>
+    <string name="goolvpn_updates_download_failed">Не удалось скачать обновление. Попробуйте позже.</string>
+    <string name="goolvpn_deactivate_connected">Перед отвязкой устройства отключите VPN.</string>
+    <string name="goolvpn_deactivate_confirm_title">Отвязать это устройство?</string>
+    <string name="goolvpn_deactivate_confirm_text">Для повторного входа в GOOLVPN Connect понадобится новая одноразовая ссылка из Telegram-бота.</string>
+    <string name="goolvpn_theme">Тема</string>
+    <string name="goolvpn_theme_description">Следовать теме телефона автоматически или выбрать оформление вручную.</string>
+    <string name="goolvpn_theme_system">Системная</string>
+    <string name="goolvpn_theme_light">Светлая</string>
+    <string name="goolvpn_theme_dark">Тёмная</string>
+    <string name="goolvpn_diagnostics">Проверить подключение</string>
+    <string name="goolvpn_diagnostics_description">Проверить сеть, сервер, доступ и состояние VPN.</string>
+    <string name="goolvpn_diagnostics_title">Диагностика GOOLVPN</string>
+    <string name="goolvpn_diagnostics_running">Проверяем подключение…</string>
+    <string name="goolvpn_diagnostics_copy">Скопировать</string>
+    <string name="goolvpn_diagnostics_copied">Отчёт скопирован</string>
+    <string name="goolvpn_diagnostics_send_support">Отправить в поддержку</string>
+    <string name="goolvpn_diagnostics_send_confirm_title">Отправить отчёт?</string>
+    <string name="goolvpn_diagnostics_send_confirm_text">Поддержка получит только показанный здесь отчёт и название устройства. Ссылка подписки, код активации и конфигурация VPN не передаются.</string>
+    <string name="goolvpn_diagnostics_sent">Отправлено в поддержку: обращение #%1$d</string>
+    <string name="goolvpn_diagnostics_healthy">Подключение в порядке</string>
+    <string name="goolvpn_diagnostics_attention">Нужна проверка</string>
+    <string name="goolvpn_diagnostics_summary">Если проблема останется, отправьте отчёт в поддержку.</string>
+    <string name="goolvpn_diagnostics_network">Интернет</string>
+    <string name="goolvpn_diagnostics_server">Связь с GOOLVPN</string>
+    <string name="goolvpn_diagnostics_access">Доступ и профиль</string>
+    <string name="goolvpn_diagnostics_status_ok">Работает</string>
+    <string name="goolvpn_diagnostics_status_problem">Нужна проверка</string>
+    <string name="goolvpn_diagnostics_route_strategy">Стратегия маршрута: %1$s</string>
+    <string name="goolvpn_diagnostics_route_auto">Автоматический выбор маршрута</string>
+    <string name="goolvpn_diagnostics_route_fast">Приоритет скорости через Hysteria2</string>
+    <string name="goolvpn_diagnostics_route_stable">Совместимые VLESS/Naive маршруты</string>
+    <string name="goolvpn_diagnostics_route_unknown">Недоступно</string>
+    <string name="goolvpn_diagnostics_show_details">Технические детали</string>
+    <string name="goolvpn_diagnostics_hide_details">Скрыть технические детали</string>
+    <string name="goolvpn_onboarding_connection_title">Выберите режим подключения</string>
+    <string name="goolvpn_onboarding_connection_text">Краткое знакомство с режимами подключения и настройками.</string>
+    <string name="goolvpn_onboarding_auto_text">Рекомендуем. Сам выбирает рабочее подключение.</string>
+    <string name="goolvpn_onboarding_fast_text">Приоритет скорости через Hysteria2.</string>
+    <string name="goolvpn_onboarding_stable_text">Для сетей, где UDP ограничен.</string>
+    <string name="goolvpn_onboarding_diagnostics_title">Проверить подключение</string>
+    <string name="goolvpn_onboarding_diagnostics_text">Если что-то не работает, здесь можно быстро отправить отчёт в поддержку.</string>
+    <string name="goolvpn_onboarding_apps_title">Приложения и VPN</string>
+    <string name="goolvpn_onboarding_apps_text">Выберите, каким приложениям нужен VPN, а каким — прямой интернет.</string>
+    <string name="goolvpn_onboarding_next">Далее</string>
+    <string name="goolvpn_onboarding_done">Готово</string>
+    <string name="goolvpn_onboarding_skip">Пропустить</string>
+    <string name="goolvpn_onboarding_progress">%1$d / %2$d</string>
+    <string name="goolvpn_onboarding_reopen">Как пользоваться GOOLVPN</string>
+    <string name="goolvpn_onboarding_reopen_description">Ещё раз показать краткую инструкцию по режимам и настройкам.</string>
+</resources>
