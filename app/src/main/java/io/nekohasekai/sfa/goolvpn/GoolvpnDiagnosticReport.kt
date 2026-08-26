@@ -11,6 +11,8 @@ data class GoolvpnDiagnosticSnapshot(
     val accessActive: Boolean,
     val profileReady: Boolean,
     val connectionMode: String,
+    val smartBypassVersion: String? = null,
+    val smartBypassGroups: Set<String> = emptySet(),
     val lastError: String?,
 ) {
     val isHealthy: Boolean
@@ -41,6 +43,8 @@ data class GoolvpnDiagnosticSnapshot(
         appendLine("profile_ready=$profileReady")
         appendLine("mode=${oneLine(connectionMode)}")
         appendLine("route_strategy=$routeStrategy")
+        appendLine("smart_bypass_version=${smartBypassVersion?.let(::oneLine) ?: "none"}")
+        appendLine("smart_bypass_groups=${smartBypassGroups.sorted().joinToString(",")}")
         append("last_error=${lastError?.let(::oneLine) ?: "none"}")
     }
 

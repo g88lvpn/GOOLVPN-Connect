@@ -88,6 +88,7 @@ import io.nekohasekai.libbox.Libbox
 import io.nekohasekai.sfa.Application
 import io.nekohasekai.sfa.BuildConfig
 import io.nekohasekai.sfa.R
+import io.nekohasekai.sfa.bg.BoxService
 import io.nekohasekai.sfa.bg.ServiceConnection
 import io.nekohasekai.sfa.bg.ServiceNotification
 import io.nekohasekai.sfa.compat.WindowSizeClassCompat
@@ -130,8 +131,11 @@ import io.nekohasekai.sfa.update.UpdateState
 import io.nekohasekai.sfa.vendor.Vendor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+
+private const val STOP_SERVICE_TIMEOUT_MS = 7_000L
 
 class MainActivity :
     AppCompatActivity(),
@@ -150,6 +154,8 @@ class MainActivity :
     private var pendingImportLocalProfileUri by mutableStateOf<Uri?>(null)
     private var newProfileArgs by mutableStateOf(NewProfileArgs())
     private var parseImportLocalProfileJob: Job? = null
+    private var stopServiceTimeoutJob: Job? = null
+    private var stopServiceRequested by mutableStateOf(false)
     private var pendingIntentErrorMessage by mutableStateOf<String?>(null)
     private var pendingActivationToken by mutableStateOf<String?>(null)
 
@@ -311,6 +317,43 @@ class MainActivity :
             return
         }
         startService0()
+    }
+
+    /**
+     * Uses the same direct broadcast as the foreground-notification action.
+     * The dashboard state can lag behind the bound service callback on slower devices,
+     * so the stop request must not depend on DashboardViewModel's cached status.
+     */
+    private fun requestStopService() {
+        if (stopServiceRequested || currentServiceStatus == Status.Stopped ||
+            currentServiceStatus == Status.Stopping
+        ) {
+            return
+        }
+
+        stopServiceRequested = true
+        updateServiceStatus(Status.Stopping)
+        BoxService.stop()
+
+        stopServiceTimeoutJob?.cancel()
+        stopServiceTimeoutJob = lifecycleScope.launch {
+            delay(STOP_SERVICE_TIMEOUT_MS)
+            if (stopServiceRequested) {
+                stopServiceRequested = false
+                updateServiceStatus(Status.Started)
+                pendingIntentErrorMessage = getString(R.string.goolvpn_disconnect_timeout)
+            }
+        }
+    }
+
+    private fun updateServiceStatus(status: Status) {
+        currentServiceStatus = status
+        if (::dashboardViewModel.isInitialized) {
+            dashboardViewModel.updateServiceStatus(status)
+        }
+        if (::goolvpnViewModel.isInitialized) {
+            goolvpnViewModel.updateServiceStatus(status)
+        }
     }
 
     private fun startService0() {
@@ -843,7 +886,7 @@ class MainActivity :
                         if (currentServiceStatus == Status.Stopped) {
                             startService()
                         } else {
-                            dashboardViewModel.toggleService()
+                            requestStopService()
                         }
                     },
                     onOpenUrl = { url -> this@MainActivity.launchCustomTab(url) },
@@ -1213,14 +1256,14 @@ class MainActivity :
     }
 
     override fun onServiceStatusChanged(status: Status) {
-        currentServiceStatus = status
-        // Update service status in ViewModels
-        if (::dashboardViewModel.isInitialized) {
-            dashboardViewModel.updateServiceStatus(status)
+        if (stopServiceRequested && status == Status.Started) {
+            return
         }
-        if (::goolvpnViewModel.isInitialized) {
-            goolvpnViewModel.updateServiceStatus(status)
+        if (status == Status.Stopped) {
+            stopServiceRequested = false
+            stopServiceTimeoutJob?.cancel()
         }
+        updateServiceStatus(status)
     }
 
     fun reconnect() {

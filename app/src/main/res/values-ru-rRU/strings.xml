@@ -468,7 +468,12 @@
     <string name="goolvpn_status_disconnected">Не подключено</string>
     <string name="goolvpn_status_inactive">Доступ не активен</string>
     <string name="goolvpn_connect">Подключить</string>
+    <string name="goolvpn_smart_bypass">Умный режим</string>
+    <string name="goolvpn_smart_bypass_off">Весь трафик идёт через GOOLVPN</string>
+    <string name="goolvpn_smart_bypass_on">%1$d проверенных групп идут напрямую</string>
+    <string name="goolvpn_smart_bypass_recommended">Рекомендуем: локальные сервисы работают напрямую, остальное — через GOOLVPN.</string>
     <string name="goolvpn_disconnect">Отключить</string>
+    <string name="goolvpn_disconnect_timeout">VPN всё ещё подключён. Попробуйте отключить ещё раз.</string>
     <string name="goolvpn_valid_until">Доступ до %1$s</string>
     <string name="goolvpn_lifetime">Без ограничения срока</string>
     <string name="goolvpn_automatic_mode">Автоматический режим</string>
@@ -506,6 +511,8 @@
     <string name="goolvpn_app_preset_services_examples">Например: Госуслуги, RuStore, операторы связи</string>
     <string name="goolvpn_app_preset_shopping">Покупки</string>
     <string name="goolvpn_app_preset_shopping_examples">Например: Ozon, Wildberries, Авито</string>
+    <string name="goolvpn_app_preset_vk_mail">VK и Mail.ru</string>
+    <string name="goolvpn_app_preset_vk_mail_examples">Например: VK, Почта, Облако, OK</string>
     <string name="goolvpn_app_preset_added">Добавлено приложений: %1$d</string>
     <string name="goolvpn_app_preset_none">В этой группе нет новых установленных приложений</string>
     <string name="goolvpn_devices">Устройства</string>
@@ -575,6 +582,8 @@
     <string name="goolvpn_onboarding_diagnostics_text">Если что-то не работает, здесь можно быстро отправить отчёт в поддержку.</string>
     <string name="goolvpn_onboarding_apps_title">Приложения и VPN</string>
     <string name="goolvpn_onboarding_apps_text">Выберите, каким приложениям нужен VPN, а каким — прямой интернет.</string>
+    <string name="goolvpn_onboarding_smart_bypass_title">Умный режим</string>
+    <string name="goolvpn_onboarding_smart_bypass_text">Рекомендуем. Локальные сервисы идут напрямую, а остальной трафик защищает GOOLVPN. Режим и отдельные группы можно изменить позже.</string>
     <string name="goolvpn_onboarding_next">Далее</string>
     <string name="goolvpn_onboarding_done">Готово</string>
     <string name="goolvpn_onboarding_skip">Пропустить</string>

@@ -96,6 +96,7 @@ fun SFANavHost(
                     onOpenAccount = { onOpenUrl(goolvpnUiState.accountUrl) },
                     onOpenSettings = { navController.navigate("settings/goolvpn") },
                     onConnectionModeChange = goolvpnViewModel::setConnectionMode,
+                    onSmartBypassChange = goolvpnViewModel::setSmartBypassEnabled,
                     onContinueOnboarding = {
                         val openSettings = goolvpnUiState.onboardingStep == 3
                         goolvpnViewModel.advanceOnboarding()
@@ -259,6 +260,8 @@ fun SFANavHost(
                     serviceStatus = serviceStatus,
                     themeMode = themeMode,
                     onThemeModeChange = onThemeModeChange,
+                    onSmartBypassChange = goolvpnViewModel::setSmartBypassEnabled,
+                    onSmartBypassGroupChange = goolvpnViewModel::setSmartBypassGroupEnabled,
                     onBack = { navController.navigateUp() },
                     onOpenAppRouting = {
                         navController.navigate("settings/profile_override/manage")

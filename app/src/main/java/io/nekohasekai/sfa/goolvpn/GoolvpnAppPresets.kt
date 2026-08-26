@@ -82,6 +82,19 @@ object GoolvpnAppPresets {
                 "com.alibaba.aliexpresshd",
             ),
         ),
+        GoolvpnAppPreset(
+            titleRes = R.string.goolvpn_app_preset_vk_mail,
+            examplesRes = R.string.goolvpn_app_preset_vk_mail_examples,
+            packageNames = setOf(
+                "com.vkontakte.android",
+                "com.vk.im",
+                "com.vk.music",
+                "com.vk.vkvideo",
+                "ru.mail.mailapp",
+                "ru.mail.cloud",
+                "ru.ok.android",
+            ),
+        ),
     )
 
     fun installedPackageNames(preset: GoolvpnAppPreset, installedPackageNames: Set<String>): Set<String> =

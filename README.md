@@ -5,33 +5,17 @@ Android (SFA) and keeps the proven Android VPN/TUN layer while providing a
 simplified GOOLVPN interface, account activation, managed profiles, automatic
 route selection, per-app VPN, diagnostics and signed self-hosted updates.
 
-Source release: `0.8.0` (`versionCode=21`).
+Current public release: `0.7.1` (`versionCode=19`).
 
 - Package: `site.goolv.connect`
 - Android: minSdk 23, targetSdk 35
 - Stable download: https://sub.goolv.site/app/download
-- Release notes: `RELEASE_NOTES_0.8.0.md`
 - Build instructions: `BUILDING.md`
 - Release signing: `RELEASE_SIGNING.md`
 - Next patches: `PATCH_ROADMAP.md`
 
 This repository contains a modified GPL build. Public APK releases must be
 accompanied by the corresponding source and license information.
-
-## Build from source
-
-Use Windows PowerShell with the Android SDK, JDK and Go toolchain available.
-The project build script safely maps a temporary ASCII-only drive path because
-Android AIDL cannot reliably build from a Windows path containing non-ASCII
-characters.
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\build.ps1 -Release -Test
-```
-
-The release key is deliberately not included. Follow `RELEASE_SIGNING.md` to
-create or provide your own signing setup; never commit a keystore or
-`signing.properties`.
 
 ## License
 

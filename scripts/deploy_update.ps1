@@ -30,7 +30,7 @@ $apkName = "GOOLVPN-Connect-$Version-arm64-v8a.apk"
 $manifestName = "app_release-$Version-test.json"
 $apkPath = Join-Path $repoRoot "dist\$apkName"
 $manifestPath = Join-Path $repoRoot "dist\$manifestName"
-$activationPage = Join-Path $workspaceRoot "nodegate-site\app-activate.html"
+$activationPage = Join-Path (Split-Path $workspaceRoot -Parent) "nodegate-site\app-activate.html"
 
 foreach ($path in @($apkPath, $manifestPath, $activationPage)) {
     if (-not (Test-Path -LiteralPath $path -PathType Leaf)) {

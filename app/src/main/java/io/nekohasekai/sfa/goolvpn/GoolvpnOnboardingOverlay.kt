@@ -137,7 +137,7 @@ fun GoolvpnOnboardingOverlay(
                     verticalAlignment = Alignment.CenterVertically,
                 ) {
                     Text(
-                        text = stringResource(R.string.goolvpn_onboarding_progress, step, 5),
+                        text = stringResource(R.string.goolvpn_onboarding_progress, step, 6),
                         style = MaterialTheme.typography.labelMedium,
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                     )
@@ -153,7 +153,7 @@ fun GoolvpnOnboardingOverlay(
                         ) {
                             Text(
                                 stringResource(
-                                    if (step == 5) R.string.goolvpn_onboarding_done
+                                    if (step == 6) R.string.goolvpn_onboarding_done
                                     else R.string.goolvpn_onboarding_next,
                                 ),
                             )

@@ -2,7 +2,10 @@
 
 This document defines the release gate for the future smart bypass with a
 curated default service list.
-It does not enable direct routing and does not contain production domains.
+The initial reviewed catalog is delivered by the backend but remains disabled
+until the Android user explicitly enables Smart mode or an individual group.
+The app presents Smart mode as recommended, while retaining an explicit off
+switch and per-group control.
 
 ## Scope
 
@@ -92,6 +95,8 @@ direct categories, or external list auto-updates.
 - DNS, IPv4/IPv6, CDN and ECH behaviour are checked for every initial service.
 - A failed rule is removed or disabled server-side; it is never silently
   expanded to a whole TLD.
+- Initial catalog groups are Yandex, banking, marketplaces, government
+  services, and VK/Mail.ru. They contain suffixes only; no CIDR is used.
 
 ## Product destination after 0.8.0
 

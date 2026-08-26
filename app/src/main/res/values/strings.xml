@@ -480,7 +480,12 @@
     <string name="goolvpn_status_disconnected">Not connected</string>
     <string name="goolvpn_status_inactive">Access is inactive</string>
     <string name="goolvpn_connect">Connect</string>
+    <string name="goolvpn_smart_bypass">Smart mode</string>
+    <string name="goolvpn_smart_bypass_off">Everything uses GOOLVPN</string>
+    <string name="goolvpn_smart_bypass_on">%1$d reviewed groups use direct internet</string>
+    <string name="goolvpn_smart_bypass_recommended">Recommended: combines local services with access through GOOLVPN.</string>
     <string name="goolvpn_disconnect">Disconnect</string>
+    <string name="goolvpn_disconnect_timeout">The VPN is still connected. Try disconnecting again.</string>
     <string name="goolvpn_valid_until">Valid until %1$s</string>
     <string name="goolvpn_lifetime">No expiration</string>
     <string name="goolvpn_automatic_mode">Automatic mode</string>
@@ -518,6 +523,8 @@
     <string name="goolvpn_app_preset_services_examples">For example: Gosuslugi, RuStore, mobile operators</string>
     <string name="goolvpn_app_preset_shopping">Shopping</string>
     <string name="goolvpn_app_preset_shopping_examples">For example: Ozon, Wildberries, Avito</string>
+    <string name="goolvpn_app_preset_vk_mail">VK and Mail.ru</string>
+    <string name="goolvpn_app_preset_vk_mail_examples">For example: VK, Mail, Cloud, OK</string>
     <string name="goolvpn_app_preset_added">Apps added: %1$d</string>
     <string name="goolvpn_app_preset_none">No new installed apps in this group</string>
     <string name="goolvpn_devices">Devices</string>
@@ -587,6 +594,8 @@
     <string name="goolvpn_onboarding_diagnostics_text">If something does not work, quickly send a report to support here.</string>
     <string name="goolvpn_onboarding_apps_title">Apps and VPN</string>
     <string name="goolvpn_onboarding_apps_text">Choose which apps use VPN and which connect directly.</string>
+    <string name="goolvpn_onboarding_smart_bypass_title">Smart mode</string>
+    <string name="goolvpn_onboarding_smart_bypass_text">Recommended. Local services use direct internet; everything else stays protected by GOOLVPN. You can turn it off or adjust groups later.</string>
     <string name="goolvpn_onboarding_next">Next</string>
     <string name="goolvpn_onboarding_done">Done</string>
     <string name="goolvpn_onboarding_skip">Skip</string>

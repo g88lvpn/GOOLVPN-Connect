@@ -4,12 +4,29 @@ Updated: 2026-08-22.
 
 ## Current baseline
 
-- Public release: `0.7.2` (`versionCode=20`).
+- Public release: `0.8.0` (`versionCode=21`).
 - Stable download: https://sub.goolv.site/app/download
 - Package/signing identity is permanent and must not change.
 - `0.7.2` was published manually on 2026-08-22.
-- Local release candidate: `0.8.0` (`versionCode=21`) was rebuilt and signed on
-  2026-08-23; its 35 unit tests passed. It is not uploaded or published.
+- `0.8.0` was published on 2026-08-24 after the physical smoke checks. Its
+  public source, GPL-3.0 license and tag `v0.8.0` are available at
+  https://github.com/g88lvpn/GOOLVPN-Connect/tree/v0.8.0; the release notes
+  shown by the updater link there. No service restart was required.
+
+## 0.8.1 — reliable disconnect (in preparation)
+
+1. The main GOOLVPN screen now sends the same direct stop broadcast as the
+   foreground-notification action. It no longer depends on a possibly stale
+   DashboardViewModel status on slower devices.
+2. A tap immediately shows the existing "Disconnecting" state and blocks
+   repeated taps. The UI returns to a retryable connected state after seven
+   seconds if `Stopped` was not observed, with a clear retry message.
+3. This patch is intentionally limited to the observed disconnect issue. No
+   routing, profiles, backend API or release channel behavior changes.
+4. `0.8.1` (`versionCode=22`) was built and published through the updater on
+   2026-08-26. The public manifest, version, file size and SHA-256 were
+   verified. No server restart was required; physical phone verification is
+   still required. The owner publishes the matching source snapshot separately.
 
 ## 0.7.2 — reliability and support visibility (published)
 
@@ -71,6 +88,21 @@ Keep this patch narrow and compatible with the current backend.
 - Google Play remains optional. Play Protect `uncommon app` is a distribution
   reputation warning and is not guaranteed to disappear after identity
   verification alone.
+
+## 0.9.x — Smart mode stabilization before 1.0
+
+- The app profile API now returns a versioned, small catalog for Yandex,
+  banking, marketplaces, government services and VK/Mail.ru.
+- Android validates catalog syntax, persists the user's enabled group IDs and
+  injects only those suffixes as `direct` rules before the final GOOLVPN route.
+  The all-through-VPN default and the existing per-app bypass remain intact.
+- `0.9.0` was built for device testing. The production catalog deployment was
+  verified manually with Ozon: it warns when the group is off and opens after
+  the marketplace group is enabled and VPN is restarted.
+- `0.9.1` (`versionCode 24`) adds the recommended main-screen switch, collapses
+  per-group controls in settings, and adds Smart mode to onboarding. Its debug
+  build and unit tests passed; it still needs a signed device candidate and
+  Wi-Fi/LTE checks for every enabled group before release.
 
 ## Deferred infrastructure
 

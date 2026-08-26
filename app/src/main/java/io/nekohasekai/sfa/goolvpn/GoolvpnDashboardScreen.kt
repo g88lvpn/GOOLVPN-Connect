@@ -37,6 +37,7 @@ import androidx.compose.material3.SegmentedButton
 import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
@@ -81,6 +82,7 @@ fun GoolvpnDashboardScreen(
     onOpenAccount: () -> Unit,
     onOpenSettings: () -> Unit,
     onConnectionModeChange: (GoolvpnConnectionMode) -> Unit,
+    onSmartBypassChange: (Boolean) -> Unit,
     onContinueOnboarding: () -> Unit,
     onDismissOnboarding: () -> Unit,
     modifier: Modifier = Modifier,
@@ -176,6 +178,16 @@ fun GoolvpnDashboardScreen(
                     )
                 }
             }
+
+            if (uiState.smartBypassGroups.isNotEmpty()) {
+                item {
+                    SmartBypassCard(
+                        enabled = uiState.smartBypassEnabled,
+                        enabledGroupCount = uiState.smartBypassEnabledGroupIds.size,
+                        onEnabledChange = onSmartBypassChange,
+                    )
+                }
+            }
         }
 
         onboardingMode?.let { mode ->
@@ -201,6 +213,54 @@ fun GoolvpnDashboardScreen(
                 position = GoolvpnCoachmarkPosition.Bottom,
                 onNext = onContinueOnboarding,
                 onDismiss = onDismissOnboarding,
+            )
+        }
+    }
+}
+
+@Composable
+private fun SmartBypassCard(
+    enabled: Boolean,
+    enabledGroupCount: Int,
+    onEnabledChange: (Boolean) -> Unit,
+) {
+    Card(
+        shape = RoundedCornerShape(8.dp),
+        colors = CardDefaults.cardColors(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLow,
+        ),
+    ) {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalAlignment = Alignment.CenterVertically,
+        ) {
+            Column(modifier = Modifier.weight(1f)) {
+                Text(
+                    text = stringResource(R.string.goolvpn_smart_bypass),
+                    fontWeight = FontWeight.SemiBold,
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = stringResource(R.string.goolvpn_smart_bypass_recommended),
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+                Spacer(Modifier.height(4.dp))
+                Text(
+                    text = if (enabled) {
+                        stringResource(R.string.goolvpn_smart_bypass_on, enabledGroupCount)
+                    } else {
+                        stringResource(R.string.goolvpn_smart_bypass_off)
+                    },
+                    style = MaterialTheme.typography.bodySmall,
+                    color = MaterialTheme.colorScheme.onSurfaceVariant,
+                )
+            }
+            Switch(
+                checked = enabled,
+                onCheckedChange = onEnabledChange,
             )
         }
     }

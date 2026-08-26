@@ -48,6 +48,9 @@ data class GoolvpnUiState(
     val supportUrl: String = "https://goolv.site/support.html",
     val feedbackUrl: String = "https://goolv.site/feedback",
     val connectionMode: GoolvpnConnectionMode = GoolvpnConnectionMode.Automatic,
+    val smartBypassGroups: List<GoolvpnSmartBypassGroup> = emptyList(),
+    val smartBypassEnabled: Boolean = false,
+    val smartBypassEnabledGroupIds: Set<String> = emptySet(),
 )
 
 class GoolvpnViewModel : ViewModel() {
@@ -57,6 +60,7 @@ class GoolvpnViewModel : ViewModel() {
     private val preferences =
         Application.application.getSharedPreferences("goolvpn_settings", android.content.Context.MODE_PRIVATE)
     private var serviceStatus = Status.Stopped
+    private var serverConfig: String? = null
     private val activationRequests = Channel<String>(Channel.CONFLATED)
     private val _uiState =
         MutableStateFlow(GoolvpnUiState(connectionMode = savedConnectionMode()))
@@ -211,7 +215,8 @@ class GoolvpnViewModel : ViewModel() {
         val nextStep = when (_uiState.value.onboardingStep) {
             ONBOARDING_AUTOMATIC -> ONBOARDING_FAST
             ONBOARDING_FAST -> ONBOARDING_STABLE
-            ONBOARDING_STABLE -> ONBOARDING_APP_ROUTING
+            ONBOARDING_STABLE -> ONBOARDING_SMART_BYPASS
+            ONBOARDING_SMART_BYPASS -> ONBOARDING_APP_ROUTING
             ONBOARDING_APP_ROUTING -> ONBOARDING_DIAGNOSTICS
             else -> 0
         }
@@ -244,6 +249,44 @@ class GoolvpnViewModel : ViewModel() {
         }
     }
 
+    fun setSmartBypassEnabled(enabled: Boolean) {
+        val ids = if (enabled) _uiState.value.smartBypassGroups.map { it.id }.toSet() else emptySet()
+        updateSmartBypassGroups(ids)
+    }
+
+    fun setSmartBypassGroupEnabled(groupId: String, enabled: Boolean) {
+        val ids = _uiState.value.smartBypassEnabledGroupIds.toMutableSet()
+        if (enabled) ids += groupId else ids -= groupId
+        updateSmartBypassGroups(ids)
+    }
+
+    private fun updateSmartBypassGroups(ids: Set<String>) {
+        preferences.edit().putStringSet(KEY_SMART_BYPASS_GROUPS, ids).apply()
+        val enabled = ids.isNotEmpty()
+        _uiState.update { it.copy(smartBypassEnabled = enabled, smartBypassEnabledGroupIds = ids, error = null) }
+        val config = serverConfig ?: return
+        val state = _uiState.value
+        viewModelScope.launch {
+            try {
+                val changed = withContext(Dispatchers.IO) {
+                    profileStore.apply(
+                        applySmartBypassRules(
+                            config,
+                            state.smartBypassGroups,
+                            ids,
+                        ),
+                        "${state.smartBypassGroups.firstOrNull()?.catalogVersion ?: "none"}:${ids.sorted()}",
+                    )
+                }
+                if (changed && serviceStatus == Status.Started) {
+                    withContext(Dispatchers.IO) { Libbox.newStandaloneCommandClient().serviceReload() }
+                }
+            } catch (_: Exception) {
+                _uiState.update { it.copy(error = "Не удалось применить Умный режим.") }
+            }
+        }
+    }
+
     fun updateServiceStatus(status: Status) {
         val previousStatus = serviceStatus
         serviceStatus = status
@@ -259,9 +302,18 @@ class GoolvpnViewModel : ViewModel() {
         try {
             val profile = withContext(Dispatchers.IO) { api.getProfile(deviceToken) }
             var profileChanged = false
+            val smartBypassIds = preferences.getStringSet(KEY_SMART_BYPASS_GROUPS, emptySet()).orEmpty()
             val profileReady = if (profile.active && profile.config != null) {
+                serverConfig = profile.config
                 withContext(Dispatchers.IO) {
-                    profileChanged = profileStore.apply(profile.config, profile.profileVersion)
+                    profileChanged = profileStore.apply(
+                        applySmartBypassRules(
+                            profile.config,
+                            profile.smartBypassGroups,
+                            smartBypassIds,
+                        ),
+                        "${profile.profileVersion}:${profile.smartBypassGroups.firstOrNull()?.catalogVersion ?: "none"}:${smartBypassIds.sorted()}",
+                    )
                 }
                 true
             } else {
@@ -287,10 +339,13 @@ class GoolvpnViewModel : ViewModel() {
                 accountUrl = profile.accountUrl,
                 supportUrl = profile.supportUrl,
                 connectionMode = savedConnectionMode(),
+                smartBypassGroups = profile.smartBypassGroups,
+                smartBypassEnabled = smartBypassIds.isNotEmpty(),
+                smartBypassEnabledGroupIds = smartBypassIds,
                 onboardingStep = if (isOnboardingCompleted()) {
                     0
                 } else {
-                    _uiState.value.onboardingStep.takeIf { it in 1..5 } ?: ONBOARDING_AUTOMATIC
+                    _uiState.value.onboardingStep.takeIf { it in 1..6 } ?: ONBOARDING_AUTOMATIC
                 },
             )
         } catch (error: GoolvpnApiException) {
@@ -383,6 +438,8 @@ class GoolvpnViewModel : ViewModel() {
             accessActive = current.active,
             profileReady = current.profileReady,
             connectionMode = current.connectionMode.preferenceValue,
+            smartBypassVersion = current.smartBypassGroups.firstOrNull()?.catalogVersion,
+            smartBypassGroups = current.smartBypassEnabledGroupIds,
             lastError = current.error,
         )
     }
@@ -406,12 +463,14 @@ class GoolvpnViewModel : ViewModel() {
 
     private companion object {
         const val KEY_CONNECTION_MODE = "connection_mode"
+        const val KEY_SMART_BYPASS_GROUPS = "smart_bypass_groups"
         const val KEY_ONBOARDING_COMPLETED = "onboarding_completed"
         const val GOOLVPN_SELECTOR_TAG = "GOOLVPN"
         const val ONBOARDING_AUTOMATIC = 1
         const val ONBOARDING_FAST = 2
         const val ONBOARDING_STABLE = 3
-        const val ONBOARDING_APP_ROUTING = 4
-        const val ONBOARDING_DIAGNOSTICS = 5
+        const val ONBOARDING_SMART_BYPASS = 4
+        const val ONBOARDING_APP_ROUTING = 5
+        const val ONBOARDING_DIAGNOSTICS = 6
     }
 }

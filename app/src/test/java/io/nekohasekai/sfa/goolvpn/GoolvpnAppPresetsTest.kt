@@ -24,5 +24,7 @@ class GoolvpnAppPresetsTest {
         assertEquals(packageNames.size, packageNames.toSet().size)
         assertTrue(packageNames.contains("com.idamob.tinkoff.android"))
         assertTrue(packageNames.contains("com.wildberries.ru"))
+        assertTrue(packageNames.contains("com.vkontakte.android"))
+        assertTrue(packageNames.contains("ru.mail.mailapp"))
     }
 }

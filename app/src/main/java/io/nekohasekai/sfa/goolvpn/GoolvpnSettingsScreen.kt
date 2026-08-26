@@ -27,6 +27,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Apps
+import androidx.compose.material.icons.filled.ExpandLess
+import androidx.compose.material.icons.filled.ExpandMore
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Logout
 import androidx.compose.material.icons.filled.MonitorHeart
@@ -52,6 +54,7 @@ import androidx.compose.material3.SegmentedButtonDefaults
 import androidx.compose.material3.SingleChoiceSegmentedButtonRow
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
+import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBar
@@ -60,6 +63,7 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -92,6 +96,8 @@ fun GoolvpnSettingsScreen(
     serviceStatus: Status,
     themeMode: GoolvpnThemeMode,
     onThemeModeChange: (GoolvpnThemeMode) -> Unit,
+    onSmartBypassChange: (Boolean) -> Unit,
+    onSmartBypassGroupChange: (String, Boolean) -> Unit,
     onBack: () -> Unit,
     onOpenAppRouting: () -> Unit,
     onOpenDevices: () -> Unit,
@@ -114,10 +120,11 @@ fun GoolvpnSettingsScreen(
     var showDeactivateDialog by remember { mutableStateOf(false) }
     var showDiagnosticSendConfirmation by remember { mutableStateOf(false) }
     var showDiagnosticDetails by remember { mutableStateOf(false) }
+    var smartBypassGroupsExpanded by rememberSaveable { mutableStateOf(false) }
     val onboardingStep = uiState.onboardingStep
     val onboardingTargetTitle = when (onboardingStep) {
-        4 -> stringResource(R.string.goolvpn_excluded_apps)
-        5 -> stringResource(R.string.goolvpn_diagnostics)
+        5 -> stringResource(R.string.goolvpn_excluded_apps)
+        6 -> stringResource(R.string.goolvpn_diagnostics)
         else -> null
     }
     val items = listOf(
@@ -204,10 +211,19 @@ fun GoolvpnSettingsScreen(
     val listState = rememberLazyListState()
     var onboardingTargetBounds by remember { mutableStateOf<Rect?>(null) }
     val onboardingTargetIndex = items.indexOfFirst { it.title == onboardingTargetTitle }
+    val smartBypassListItemCount = if (uiState.smartBypassGroups.isEmpty()) {
+        0
+    } else {
+        2 + if (smartBypassGroupsExpanded) uiState.smartBypassGroups.size else 0
+    }
 
-    LaunchedEffect(onboardingStep, onboardingTargetIndex) {
+    LaunchedEffect(onboardingStep, onboardingTargetIndex, smartBypassListItemCount) {
+        if (onboardingStep == 4 && uiState.smartBypassGroups.isNotEmpty()) {
+            smartBypassGroupsExpanded = true
+            listState.animateScrollToItem(1)
+        }
         if (onboardingTargetIndex >= 0) {
-            listState.animateScrollToItem(onboardingTargetIndex + 1)
+            listState.animateScrollToItem(onboardingTargetIndex + 1 + smartBypassListItemCount)
         }
     }
 
@@ -239,6 +255,74 @@ fun GoolvpnSettingsScreen(
                         onModeChange = onThemeModeChange,
                         modifier = Modifier.padding(bottom = 8.dp),
                     )
+                }
+                if (uiState.smartBypassGroups.isNotEmpty()) {
+                    item {
+                        ListItem(
+                            headlineContent = { Text(stringResource(R.string.goolvpn_smart_bypass)) },
+                            supportingContent = {
+                                Column {
+                                    Text(
+                                        if (uiState.smartBypassEnabled) {
+                                            stringResource(R.string.goolvpn_smart_bypass_on, uiState.smartBypassEnabledGroupIds.size)
+                                        } else {
+                                            stringResource(R.string.goolvpn_smart_bypass_off)
+                                        },
+                                    )
+                                    Text(
+                                        stringResource(R.string.goolvpn_smart_bypass_recommended),
+                                        style = MaterialTheme.typography.bodySmall,
+                                        color = MaterialTheme.colorScheme.primary,
+                                    )
+                                }
+                            },
+                            leadingContent = { Icon(Icons.Default.Apps, contentDescription = null) },
+                            trailingContent = {
+                                Row(verticalAlignment = Alignment.CenterVertically) {
+                                    Switch(
+                                        checked = uiState.smartBypassEnabled,
+                                        onCheckedChange = onSmartBypassChange,
+                                    )
+                                    IconButton(onClick = {
+                                        smartBypassGroupsExpanded = !smartBypassGroupsExpanded
+                                    }) {
+                                        Icon(
+                                            imageVector = if (smartBypassGroupsExpanded) {
+                                                Icons.Default.ExpandLess
+                                            } else {
+                                                Icons.Default.ExpandMore
+                                            },
+                                            contentDescription = null,
+                                        )
+                                    }
+                                }
+                            },
+                            modifier = Modifier
+                                .onGloballyPositioned {
+                                    if (onboardingStep == 4) onboardingTargetBounds = it.boundsInWindow()
+                                }
+                                .clickable {
+                                    smartBypassGroupsExpanded = !smartBypassGroupsExpanded
+                                },
+                        )
+                        HorizontalDivider()
+                    }
+                    if (smartBypassGroupsExpanded) {
+                        items(uiState.smartBypassGroups) { group ->
+                            ListItem(
+                                headlineContent = { Text(group.title) },
+                                supportingContent = { Text(group.examples) },
+                                modifier = Modifier.padding(start = 16.dp),
+                                trailingContent = {
+                                    Switch(
+                                        checked = group.id in uiState.smartBypassEnabledGroupIds,
+                                        onCheckedChange = { onSmartBypassGroupChange(group.id, it) },
+                                    )
+                                },
+                            )
+                        }
+                    }
+                    item { HorizontalDivider() }
                 }
                 items(items) { item ->
                     val isOnboardingTarget = item.title == onboardingTargetTitle
@@ -277,19 +361,25 @@ fun GoolvpnSettingsScreen(
             }
         }
 
-        if (onboardingStep in 4..5) {
+        if (onboardingStep in 4..6) {
             GoolvpnOnboardingOverlay(
                 targetBounds = onboardingTargetBounds,
                 title = stringResource(
-                    if (onboardingStep == 4) R.string.goolvpn_onboarding_apps_title
-                    else R.string.goolvpn_onboarding_diagnostics_title,
+                    when (onboardingStep) {
+                        4 -> R.string.goolvpn_onboarding_smart_bypass_title
+                        5 -> R.string.goolvpn_onboarding_apps_title
+                        else -> R.string.goolvpn_onboarding_diagnostics_title
+                    },
                 ),
                 message = stringResource(
-                    if (onboardingStep == 4) R.string.goolvpn_onboarding_apps_text
-                    else R.string.goolvpn_onboarding_diagnostics_text,
+                    when (onboardingStep) {
+                        4 -> R.string.goolvpn_onboarding_smart_bypass_text
+                        5 -> R.string.goolvpn_onboarding_apps_text
+                        else -> R.string.goolvpn_onboarding_diagnostics_text
+                    },
                 ),
                 step = onboardingStep,
-                position = if (onboardingStep == 4) {
+                position = if (onboardingStep in 4..5) {
                     GoolvpnCoachmarkPosition.Bottom
                 } else {
                     GoolvpnCoachmarkPosition.Top
